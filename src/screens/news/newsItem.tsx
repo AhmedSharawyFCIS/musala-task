@@ -23,7 +23,10 @@ const NewsItem: React.FC<NewsItemProps> = ({ title, image, onPressCB }) => {
       onPress={onPressCB}
     >
       <CustomImage url={image} style={styles.image} />
-      <Text style={[commonStyles.flex, styles.text, { color: text }]}>
+      <Text
+        style={[commonStyles.flex, styles.text, { color: text }]}
+        numberOfLines={4}
+      >
         {title}
       </Text>
       <MaterialIcons
@@ -45,10 +48,10 @@ const styles = StyleSheet.create({
     margin: RFValue(10),
     borderRadius: RFValue(10),
     paddingEnd: RFValue(10),
+    height: RFValue(82),
   },
   image: {
     width: RFValue(100),
-    height: RFValue(80),
     borderTopStartRadius: RFValue(10),
     borderBottomStartRadius: RFValue(10),
     marginEnd: RFValue(10),
