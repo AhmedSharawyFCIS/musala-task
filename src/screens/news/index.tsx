@@ -52,7 +52,7 @@ const News: React.FC = () => {
         image={urlToImage!}
         title={title}
         onPressCB={() =>
-          navigation.navigate('newsDetails' as never, { item } as never)
+          navigation.navigate('newsDetails' as never, { ...item } as never)
         }
       />
     );

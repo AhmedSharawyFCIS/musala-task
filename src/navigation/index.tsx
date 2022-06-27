@@ -35,8 +35,24 @@ const NewsStack = () => (
 const BottomTabNavigator = () => {
   const currentTheme = useColorScheme();
   const themeMappinh = { dark: DarkTheme, light: DefaultTheme };
+
+  const linking = {
+    prefixes: ['newsfeed://'],
+    config: {
+      screens: {
+        home: {
+          path: 'home',
+          screens: {
+            newsDetails: {
+              path: 'newsDetails/:urlToImage?/:title/:description?/:content?/:author?/:publishedAt?',
+            },
+          },
+        },
+      },
+    },
+  };
   return (
-    <NavigationContainer theme={themeMappinh[currentTheme!]}>
+    <NavigationContainer theme={themeMappinh[currentTheme!]} linking={linking}>
       <BottomTab.Navigator>
         <BottomTab.Screen
           name="home"

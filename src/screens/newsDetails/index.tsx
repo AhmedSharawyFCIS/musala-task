@@ -8,8 +8,8 @@ import { commonStyles } from '../../theme';
 import { Props } from './types';
 
 const NewsDetails: React.FC<Props> = (props) => {
-  const { item } = props.route?.params;
-  const { urlToImage, title, description, content, author, publishedAt } = item;
+  const { urlToImage, title, description, content, author, publishedAt } =
+    props.route?.params || {};
 
   const renderSection = (header: string, text: string) => (
     <View style={styles.sectionContainer}>
