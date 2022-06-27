@@ -7,10 +7,10 @@ export interface Obj {
 }
 
 export interface NewsData {
-  urlToImage: string | null;
   title: string;
-  publishedAt: Date;
   description: string;
-  author: string;
-  content: string;
+  urlToImage: string | null;
+  publishedAt: Date | null;
+  author: string | null;
+  content: string | null;
 }

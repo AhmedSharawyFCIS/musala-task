@@ -22,13 +22,14 @@ const NewsDetails: React.FC<Props> = (props) => {
       <CustomImage url={urlToImage} style={styles.img} />
       <View style={styles.content}>
         <Text style={styles.header1}>{title}</Text>
-        {renderSection(translate('description'), description)}
-        {renderSection(translate('content'), content)}
-        {renderSection(translate('author'), author)}
-        {renderSection(
-          translate('published-at'),
-          moment(publishedAt).format('DD/MM/YYYY')
-        )}
+        {description && renderSection(translate('description'), description)}
+        {content && renderSection(translate('content'), content)}
+        {author && renderSection(translate('author'), author)}
+        {publishedAt &&
+          renderSection(
+            translate('published-at'),
+            moment(publishedAt).format('DD/MM/YYYY')
+          )}
       </View>
     </ScrollView>
   );
