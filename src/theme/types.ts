@@ -4,4 +4,5 @@ export interface Style {
   flex: ViewStyle | TextStyle;
   flexGrow: ViewStyle;
   centerContent: ViewStyle;
+  shadow: ViewStyle;
 }

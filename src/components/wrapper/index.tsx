@@ -17,7 +17,7 @@ const Wrapper: React.FC<Props> = ({
   data,
   onRefresh,
   children,
-}: Props) => {
+}) => {
   const message = error
     ? translate('something-went-wrong')
     : translate('empty-data');
@@ -48,7 +48,7 @@ const Wrapper: React.FC<Props> = ({
       </ScrollView>
     );
   }
-  return <View style={commonStyles.flexGrow}>{children}</View>;
+  return <View style={commonStyles.flex}>{children}</View>;
 };
 
 export default Wrapper;

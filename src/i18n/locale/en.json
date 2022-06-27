@@ -2,5 +2,9 @@
   "home": "Home",
   "settings": "Settings",
   "something-went-wrong": "Something went wrong, Please try again",
-  "empty-data": "There is no data"
+  "empty-data": "There is no data",
+  "description": "Description",
+  "content": "Content",
+  "author": "Author",
+  "published-at": "Published at"
 }

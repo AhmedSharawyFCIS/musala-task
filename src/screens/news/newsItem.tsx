@@ -1,18 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { colors, commonStyles } from '../../theme';
 import { NewsItemProps } from './types';
+import CustomImage from '../../components/customImage';
 
-const NewsItem: React.FC<NewsItemProps> = ({ title, image }: NewsItemProps) => {
+const NewsItem: React.FC<NewsItemProps> = ({ title, image, onPressCB }) => {
   return (
     <TouchableOpacity
-      style={[commonStyles.flex, styles.container]}
+      style={[commonStyles.flex, commonStyles.shadow, styles.container]}
       activeOpacity={0.7}
+      onPress={onPressCB}
     >
-      <FastImage source={{ uri: image }} style={styles.image} />
+      <CustomImage url={image} style={styles.image} />
       <Text style={[commonStyles.flex, styles.text]}>{title}</Text>
       <MaterialIcons
         name="keyboard-arrow-right"
@@ -33,14 +34,6 @@ const styles = StyleSheet.create({
     margin: RFValue(10),
     borderRadius: RFValue(10),
     paddingEnd: RFValue(10),
-    shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
   },
   image: {
     width: RFValue(100),

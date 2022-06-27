@@ -20,7 +20,11 @@ const NewsStack = () => (
       component={News}
       options={{ title: translate('home') }}
     />
-    <Stack.Screen name="newsDetails" component={NewsDetails} />
+    <Stack.Screen
+      name="newsDetails"
+      component={NewsDetails}
+      options={{ title: '' }}
+    />
   </Stack.Navigator>
 );
 const BottomTabNavigator = () => (
