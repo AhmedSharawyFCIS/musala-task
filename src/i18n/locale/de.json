@@ -1,1 +1,13 @@
-{}
+{
+  "home": "Heim",
+  "settings": "Einstellungen",
+  "something-went-wrong": "Etwas ist schief gelaufen. Bitte versuche es erneut",
+  "empty-data": "Keine Daten verfügbar",
+  "description": "Beschreibung",
+  "content": "Inhalt",
+  "author": "Autor",
+  "published-at": "Veröffentlicht unter",
+  "language": "Sprache",
+  "english": "Englisch",
+  "german": "Deutsch"
+}

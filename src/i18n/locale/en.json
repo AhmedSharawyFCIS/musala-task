@@ -6,5 +6,8 @@
   "description": "Description",
   "content": "Content",
   "author": "Author",
-  "published-at": "Published at"
+  "published-at": "Published at",
+  "language": "Language",
+  "english": "English",
+  "german": "German"
 }

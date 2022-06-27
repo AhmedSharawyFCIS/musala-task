@@ -5,16 +5,27 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { colors, commonStyles } from '../../theme';
 import { NewsItemProps } from './types';
 import CustomImage from '../../components/customImage';
+import { useTheme } from '@react-navigation/native';
 
 const NewsItem: React.FC<NewsItemProps> = ({ title, image, onPressCB }) => {
+  const {
+    colors: { card, text },
+  } = useTheme();
   return (
     <TouchableOpacity
-      style={[commonStyles.flex, commonStyles.shadow, styles.container]}
+      style={[
+        commonStyles.flex,
+        commonStyles.shadow,
+        styles.container,
+        { backgroundColor: card },
+      ]}
       activeOpacity={0.7}
       onPress={onPressCB}
     >
       <CustomImage url={image} style={styles.image} />
-      <Text style={[commonStyles.flex, styles.text]}>{title}</Text>
+      <Text style={[commonStyles.flex, styles.text, { color: text }]}>
+        {title}
+      </Text>
       <MaterialIcons
         name="keyboard-arrow-right"
         color={colors.black}
