@@ -5,3 +5,12 @@ export interface NewsParams {
 export interface Obj {
   [key: string]: string;
 }
+
+export interface NewsData {
+  urlToImage: string | null;
+  title: string;
+  publishedAt: Date;
+  description: string;
+  author: string;
+  content: string;
+}

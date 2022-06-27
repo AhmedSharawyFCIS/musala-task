@@ -3,7 +3,7 @@ import FastImage from 'react-native-fast-image';
 import { Props } from './types';
 
 const CustomImage: React.FC<Props> = ({ url, style }) => {
-  const [isErrorImage, setErrorImage] = useState<Boolean>(false);
+  const [isErrorImage, setErrorImage] = useState<boolean>(false);
 
   const source = isErrorImage
     ? require('../../assets/images/noImage.jpeg')

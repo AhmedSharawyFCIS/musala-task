@@ -1,67 +1,64 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useRef, useState } from 'react';
+import { FlatList, RefreshControl, StyleSheet, View } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useDispatch, useSelector } from 'react-redux';
 import Wrapper from '../../components/wrapper';
 import * as Actions from '../../redux/actions';
 import { AppDispatch, State } from '../../redux/types';
 import { colors, commonStyles } from '../../theme';
-import { NewsParams, Obj } from '../../types';
+import { NewsParams, NewsData } from '../../types';
 import NewsItem from './newsItem';
 import Search from './search';
 import { setTimeoutType } from './types';
-const News: React.FC = (props) => {
-  const { navigation } = props;
+const News: React.FC = () => {
+  const navigation = useNavigation();
   const dispatch: AppDispatch = useDispatch();
   const timer = useRef<setTimeoutType>();
   const [searchText, setSearchText] = useState<string>('');
-  const [refresh, setRefresh] = useState<Boolean>(false);
+  const [refresh, setRefresh] = useState<boolean>(false);
   const { news, loadingGetNews, errorGetNews } = useSelector(
     (state: State) => state.news
   );
 
-  const getNews = useCallback(
-    async (isRefresh: Boolean = false, params: NewsParams = { q: 'tesla' }) => {
-      try {
-        setRefresh(isRefresh);
-        await dispatch(Actions.getNews(isRefresh, params));
-      } catch (error) {
-      } finally {
-        setRefresh(false);
-      }
-    },
-    [dispatch]
-  );
-
-  useEffect(() => {
-    getNews();
-  }, [getNews]);
+  const getNews = async (isRefresh: boolean = false) => {
+    const params: NewsParams = { q: searchText || 'tesla' };
+    try {
+      setRefresh(isRefresh);
+      await dispatch(Actions.getNews(isRefresh, params));
+    } catch (error) {
+    } finally {
+      setRefresh(false);
+    }
+  };
 
   useEffect(() => {
     if (timer.current) {
       clearTimeout(timer.current);
     }
-    if (searchText.length > 0) {
+    if (searchText) {
       timer.current = setTimeout(() => {
-        getNews(false, { q: searchText });
+        getNews();
       }, 500);
     } else {
       getNews();
     }
-  }, [searchText, getNews]);
+  }, [searchText]);
 
-  const renderNewsItem = ({ item }: { item: Obj }) => {
+  const renderNewsItem = ({ item }: { item: NewsData }) => {
     const { title, urlToImage } = item;
     return (
       <NewsItem
-        image={urlToImage}
+        image={urlToImage!}
         title={title}
-        onPressCB={() => navigation.navigate('newsDetails', { item })}
+        onPressCB={() =>
+          navigation.navigate('newsDetails' as never, { item } as never)
+        }
       />
     );
   };
   return (
-    <View style={[commonStyles.flex]}>
+    <View style={commonStyles.flex}>
       <Search searchText={searchText} setSearchTextCB={setSearchText} />
       <Wrapper
         loading={loadingGetNews}

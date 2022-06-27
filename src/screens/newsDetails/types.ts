@@ -1,12 +1,5 @@
-export interface NewsItem {
-  urlToImage: string | null;
-  title: string;
-  publishedAt: Date;
-  description: string;
-  author: string;
-  content: string;
-}
+import { NewsData } from '../../types';
 
 export interface Props {
-  route: { params: { item: NewsItem } };
+  route: { params: { item: NewsData } };
 }
