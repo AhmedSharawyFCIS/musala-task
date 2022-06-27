@@ -19,8 +19,16 @@ const Settings: React.FC = () => {
       <Text style={styles.header}>{translate('language')}</Text>
 
       <RadioButton.Group onValueChange={onChangeLanguage} value={locale}>
-        <LanguageItem label={translate('english')} language="en" />
-        <LanguageItem label={translate('german')} language="de" />
+        <LanguageItem
+          label={translate('english')}
+          language="en"
+          onChangeLanguageCB={onChangeLanguage}
+        />
+        <LanguageItem
+          label={translate('german')}
+          language="de"
+          onChangeLanguageCB={onChangeLanguage}
+        />
       </RadioButton.Group>
     </View>
   );
